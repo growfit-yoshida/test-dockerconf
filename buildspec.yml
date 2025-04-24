@@ -7,9 +7,9 @@ phases:
       - echo "🔍 DockerSourceOutput (this repo) contents:"
       - ls -la .
 
-      - echo "🔍 AppSourceOutput (test-app) contents:"
-      - ls -la ../AppSourceOutput || echo "❌ AppSourceOutput not found"
+      - echo "🔍 AppSourceOutput contents at \$CODEBUILD_SRC_DIR_AppSourceOutput:"
+      - ls -la "$CODEBUILD_SRC_DIR_AppSourceOutput" || echo "❌ AppSourceOutput not found"
 
       - echo "✅ Check for test file in app repo:"
-      - test -f ../AppSourceOutput/README.md && echo "✅ README.md found in app repo" || echo "❌ README.md missing in app repo"
+      - test -f "$CODEBUILD_SRC_DIR_AppSourceOutput/README.md" && echo "✅ README.md found in app repo" || echo "❌ README.md missing in app repo"
 
