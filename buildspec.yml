@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "🚀 Starting multi-repo build test!"
+      - echo "🔍 DockerSourceOutput (this repo) contents:"
+      - ls -la .
+
+      - echo "🔍 AppSourceOutput (test-app) contents:"
+      - ls -la ../AppSourceOutput || echo "❌ AppSourceOutput not found"
+
+      - echo "✅ Check for test file in app repo:"
+      - test -f ../AppSourceOutput/README.md && echo "✅ README.md found in app repo" || echo "❌ README.md missing in app repo"
+
